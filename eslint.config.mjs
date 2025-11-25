@@ -13,6 +13,12 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    extends: ["next/code-web-vitals"],
+    rules: {
+      "@next/next/no-image-element": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
