@@ -1,39 +1,11 @@
-import fs from 'node:fs'
-
 import sql from 'better-sqlite3';
-import slugify from 'slugify';
-import xss from 'xss';
+
+import { getFileDetails, saveFile } from '@/utils/common';
+import { generareSlug, sanitaze } from '@/utils/validation'
 
 import { iMeal } from '@/types/meals.types';
 
 const db = sql('meals.db')
-
-// Utility functions 
-const generareSlug = (str: string) => {
-    return slugify(str, { lower: true });
-}
-
-const sanitaze = (str: string) => {
-    return xss(str);
-}
-
-const getFileDetails = (slug: string, file: any) => {
-    const extension = file.name.split('.').pop();
-    const filename = `${slug}.${extension}`;
-    return { filename, extension };
-
-}
-
-const saveFile = async (file: any, filename: string): Promise<void> => {
-    const stream = fs.createWriteStream(`/public/images/meals/${filename}`);
-    const bufferedImage = await file.arrayBuffer();
-    stream.write(Buffer.from(bufferedImage), (error: Error | null | undefined) => {
-        if (error) {
-            throw new Error('Saving image failed!');
-        }
-        stream.end();
-    })
-}
 
 export async function getAllMeals(): Promise<iMeal[]> {
     // Simulate async operation
@@ -52,25 +24,43 @@ export async function getMeal(slug: string): Promise<iMeal> {
 }
 
 export async function saveMeal(meal: iMeal): Promise<void> {
-    const { filename } = getFileDetails(meal.slug, meal.image);
-
     meal.slug = generareSlug(meal.title);
     meal.instructions = sanitaze(meal.instructions);
 
+    const { filename } = getFileDetails(meal.slug, meal.image);
+
     await saveFile(meal.image, filename);
-    meal.image = `/images/meals/${filename}`;
+    meal.image = `/meals/${filename}`;
 
+    const payload = {
+        title: meal.title,
+        slug: meal.slug,
+        image: meal.image,
+        summary: meal.summary,
+        instructions: meal.instructions,
+        creator: meal.creator,
+        creator_email: meal.creator_email
+    };
 
-    const statement = db.prepare(
-        'INSERT INTO meals (title, summary, instructions, image, slug, creator, creator_email) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    const statement = db.prepare(`
+        INSERT INTO meals (
+            title,
+            slug,
+            image, 
+            summary,
+            instructions, 
+            creator, 
+            creator_email
+        ) 
+        VALUES (
+            @title,
+            @slug,   
+            @image, 
+            @summary, 
+            @instructions, 
+            @creator, 
+            @creator_email
+        )`
     );
-    statement.run(
-        meal.title,
-        meal.summary,
-        meal.instructions,
-        meal.image,
-        meal.slug,
-        meal.creator,
-        meal.creator_email
-    );
+    statement.run(payload);
 }

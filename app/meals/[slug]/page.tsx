@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Image } from "@/libs/next";
 import { getMeal } from "@/libs/meals";
@@ -8,7 +9,9 @@ import { iMealsDynamicPageProps } from "@/app/meals/[slug]/page.types";
 
 import classes from "./page.module.css";
 
-async function MealsDynamicPage({ params }: iMealsDynamicPageProps) {
+export async function generateMetadata({
+  params,
+}: iMealsDynamicPageProps): Promise<Metadata> {
   const { slug } = await params;
   const meal = await getMeal(slug);
 
@@ -16,7 +19,20 @@ async function MealsDynamicPage({ params }: iMealsDynamicPageProps) {
     notFound();
   }
 
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
+async function MealsDynamicPage({ params }: iMealsDynamicPageProps) {
+  const { slug } = await params;
+  const meal = await getMeal(slug);
   const formattedMealInstructions = meal.instructions.replace(/\n/g, "<br />");
+
+  if (!meal) {
+    notFound();
+  }
 
   return (
     <Fragment>

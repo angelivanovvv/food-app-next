@@ -8,3 +8,7 @@ export interface iMeal {
     creator: string;
     creator_email: string;
 }
+
+export type iMealForm = Omit<iMeal, 'id' | 'slug' | 'image'> & {
+    image: File;
+};  

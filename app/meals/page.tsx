@@ -1,12 +1,18 @@
 import React, { Fragment } from "react";
 
 import { Link } from "@/libs/next";
+import type { Metadata } from "next";
 
 import { AppSuspense, MealsGrid } from "@/components";
 import { getAllMeals } from "@/libs/meals";
 
 import classes from "./page.module.css";
 import type { iProps } from "./page.types";
+
+export const metadata: Metadata = {
+  title: "All Meals",
+  description: "A list of all meals available in the Food App.",
+};
 
 const Meals = async function Meals() {
   const meals = await getAllMeals();

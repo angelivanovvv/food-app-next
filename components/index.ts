@@ -6,6 +6,7 @@ import Slider from "./Slider";
 import MealsGrid from "./MealsGrid";
 import MealItem from "./Mealitem";
 import ImagePicker from "./ImagePicker";
+import SubmitButton from "./SubmitButton";
 
 export {
     AppHeader,
@@ -16,4 +17,5 @@ export {
     MealsGrid,
     MealItem,
     ImagePicker,
+    SubmitButton
 };
