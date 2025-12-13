@@ -1,14 +1,14 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import { Image, Link } from "@/libs/next";
+import { Image, Link } from '@/libs/next';
 
-import AppHeaderBackground from "@/components/HeaderBackground";
-import NavLink from "@/components/NavLink";
+import AppHeaderBackground from '@/components/HeaderBackground';
+import NavLink from '@/components/NavLink';
 
-import logoImg from "@/assets/logo.png";
-import classes from "./AppHeader.module.css";
+import logoImg from '@/assets/logo.png';
+import classes from './AppHeader.module.css';
 
-import type { iProps } from "./AppHeader.types";
+import type { iProps } from './AppHeader.types';
 
 const AppHeader: React.FC<iProps> = function () {
   return (
@@ -33,10 +33,17 @@ const AppHeader: React.FC<iProps> = function () {
             <li>
               <NavLink href="/community">Foodies Community</NavLink>
             </li>
+            <li>
+              <NavLink href="/login">Log in</NavLink>
+            </li>
+            <li>
+              <NavLink href="/signup">Sign up</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
     </Fragment>
   );
 };
+
 export default AppHeader;

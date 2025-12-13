@@ -1,23 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./HeaderBackground.module.css";
+import classes from './HeaderBackground.module.css';
 
-import type { iProps } from "./HeaderBackground.types";
+import type { iProps } from './HeaderBackground.types';
 
 const HeaderBackground: React.FC<iProps> = function () {
   return (
-    <div className={classes["header-background"]}>
+    <div className={classes['header-background']}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop
-              offset="0%"
-              style={{ stopColor: "#59453c", stopOpacity: "1" }}
-            />
-            <stop
-              offset="100%"
-              style={{ stopColor: "#8f3a09", stopOpacity: "1" }}
-            />
+            <stop offset="0%" style={{ stopColor: '#59453c', stopOpacity: '1' }} />
+            <stop offset="100%" style={{ stopColor: '#8f3a09', stopOpacity: '1' }} />
           </linearGradient>
         </defs>
         <path

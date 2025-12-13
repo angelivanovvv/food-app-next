@@ -1,5 +1,5 @@
-import type { iMeal } from "@/types/meals.types";
+import type { iMeal } from '@/types/meals.types';
 
 export interface iProps {
-    meals: iMeal[]
+  meals: iMeal[];
 }

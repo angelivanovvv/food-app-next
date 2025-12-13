@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import MealItem from "../Mealitem";
+import MealItem from '../Mealitem';
 
-import classes from "./MealsGrid.module.css";
+import classes from './MealsGrid.module.css';
 
-import type { iMeal } from "@/types/meals.types";
-import type { iProps } from "./MealsGrid.types";
+import type { iMeal } from '@/types/meals.types';
+import type { iProps } from './MealsGrid.types';
 
 const MealsGrid: React.FC<iProps> = function ({ meals }) {
   return (

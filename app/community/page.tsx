@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
-import Image from "next/image";
+import React, { Fragment } from 'react';
+import Image from 'next/image';
 
-import mealIcon from "@/assets/icons/meal.png";
-import communityIcon from "@/assets/icons/community.png";
-import eventsIcon from "@/assets/icons/events.png";
+import mealIcon from '@/assets/icons/meal.png';
+import communityIcon from '@/assets/icons/community.png';
+import eventsIcon from '@/assets/icons/events.png';
 
-import classes from "./page.module.css";
+import classes from './page.module.css';
 
-import type { iProps } from "./page.types";
+import type { iProps } from './page.types';
 
 const CommunityPage: React.FC<iProps> = function () {
   return (
@@ -31,10 +31,7 @@ const CommunityPage: React.FC<iProps> = function () {
             <p>Find new friends & like-minded people</p>
           </li>
           <li>
-            <Image
-              src={eventsIcon}
-              alt="A crowd of people at a cooking event"
-            />
+            <Image src={eventsIcon} alt="A crowd of people at a cooking event" />
             <p>Participate in exclusive events</p>
           </li>
         </ul>

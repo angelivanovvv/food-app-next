@@ -1,14 +1,14 @@
 export interface iMeal {
-    id: string | number;
-    title: string;
-    slug: string;
-    image: string;
-    summary: string;
-    instructions: string;
-    creator: string;
-    creator_email: string;
+  id: string | number;
+  title: string;
+  slug: string;
+  image: string;
+  summary: string;
+  instructions: string;
+  creator: string;
+  creator_email: string;
 }
 
 export type iMealForm = Omit<iMeal, 'id' | 'slug' | 'image'> & {
-    image: File;
-};  
+  image: File;
+};

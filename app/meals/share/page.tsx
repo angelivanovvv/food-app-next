@@ -1,19 +1,17 @@
-"use client";
+'use client';
 
-import React, { Fragment, useActionState } from "react";
+import React, { Fragment, useActionState } from 'react';
 
-import { ImagePicker, SubmitButton } from "@/components";
-import { shareMeal } from "@/libs/actions";
-import { defaultErrorMessage } from "@/constants/constants";
+import { ImagePicker, SubmitButton } from '@/components';
+import { shareMeal } from '@/actions/meals-actions';
+import { defaultMealsFormState, MealsFormState } from '@/constants/formStates';
 
-import classes from "./page.module.css";
+import classes from './page.module.css';
 
-import type { iProps } from "@/app/meals/share/page.types";
+import type { iProps } from '@/app/meals/share/page.types';
 
 const ShareMealPage: React.FC<iProps> = function () {
-  const [state, formAction] = useActionState(shareMeal, {
-    message: defaultErrorMessage,
-  } as any);
+  const [state, formAction] = useActionState(shareMeal, defaultMealsFormState as MealsFormState);
 
   return (
     <Fragment>
@@ -45,15 +43,10 @@ const ShareMealPage: React.FC<iProps> = function () {
           </p>
           <p>
             <label htmlFor="instructions">Instructions</label>
-            <textarea
-              id="instructions"
-              name="instructions"
-              rows={10}
-              required
-            ></textarea>
+            <textarea id="instructions" name="instructions" rows={10} required></textarea>
           </p>
           <ImagePicker label="Your Image" name="image" />
-          {state?.message && <p className={"error"}>{state.message}</p>}
+          {state?.message && <p className={'error'}>{state.message}</p>}
           <p className={classes.actions}>
             <SubmitButton defaultText="Share Meal" loadingText="Sharing..." />
           </p>

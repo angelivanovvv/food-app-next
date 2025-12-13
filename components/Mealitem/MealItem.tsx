@@ -1,18 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { Link, Image } from "@/libs/next";
+import { Link, Image } from '@/libs/next';
 
-import classes from "./MealItem.module.css";
+import classes from './MealItem.module.css';
 
-import type { iProps } from "./MealItem.types";
+import type { iProps } from './MealItem.types';
 
-const MealItem: React.FC<iProps> = ({
-  title,
-  slug,
-  image,
-  summary,
-  creator,
-}) => {
+const MealItem: React.FC<iProps> = ({ title, slug, image, summary, creator }) => {
   return (
     <article className={classes.meal}>
       <header>

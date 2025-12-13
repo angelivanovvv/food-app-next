@@ -1,4 +1,4 @@
 export interface iProps {
-    loadingText?: string;
-    defaultText?: string;
+  loadingText?: string;
+  defaultText?: string;
 }

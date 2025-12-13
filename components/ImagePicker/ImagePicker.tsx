@@ -1,20 +1,18 @@
-"use client";
+'use client';
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 
-import { Image } from "@/libs/next";
-import classes from "./ImagePicker.module.css";
+import { Image } from '@/libs/next';
+import classes from './ImagePicker.module.css';
 
-import { iProps } from "./ImagePicker.types";
+import { iProps } from './ImagePicker.types';
 
-const ImagePicker: React.FC<iProps> = function ({ label = "", name }) {
+const ImagePicker: React.FC<iProps> = function ({ label = '', name }) {
   const imageInput = useRef<HTMLInputElement>(null);
 
   const [pickedImage, setPickedImage] = useState<string | null>(null);
 
-  const handleImageChange = function (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) {
+  const handleImageChange = function (event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
 
     if (!files) {
@@ -27,7 +25,7 @@ const ImagePicker: React.FC<iProps> = function ({ label = "", name }) {
 
     reader.onload = function (e) {
       const result = e.target?.result;
-      if (typeof result === "string") {
+      if (typeof result === 'string') {
         setPickedImage(result);
       }
     };
@@ -38,7 +36,7 @@ const ImagePicker: React.FC<iProps> = function ({ label = "", name }) {
   const handleClearImage = function () {
     setPickedImage(null);
     if (imageInput.current) {
-      imageInput.current.value = "";
+      imageInput.current.value = '';
     }
   };
 
@@ -65,11 +63,7 @@ const ImagePicker: React.FC<iProps> = function ({ label = "", name }) {
           required
         />
         <div className={classes.buttons}>
-          <button
-            type="button"
-            className={classes.button}
-            onClick={handleButtonClick}
-          >
+          <button type="button" className={classes.button} onClick={handleButtonClick}>
             Choose Image
           </button>
           {pickedImage && (

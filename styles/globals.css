@@ -13,6 +13,18 @@ body {
   background: radial-gradient(#282c34, #282c34);
 }
 
+.redirectLink {
+  text-align: center;
+  color: #f9572a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link {
+  color: #f1cd9e;
+  text-decoration: none;
+}
+
 .not-found,
 .error {
   margin-top: 5rem;

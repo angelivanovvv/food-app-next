@@ -21,13 +21,14 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@/actions/*": ["./actions/*"],
+      "@/constants/*": ["./constants/*"],
       "@/components/*": ["./components/*"],
       "@/libs/*": ["./libs/*"],
-      "@/api/*": ["./src/api/*"],
+      "@/api/*": ["./api/*"],
       "@/types/*": ["./types/*"],
       "@/assets/*": ["./assets/*"],
-      "@/styles/*": ["./styles/*"],
-      "@/constants/*": ["./constants/*"]
+      "@/styles/*": ["./styles/*"]
     }
   },
   "include": [

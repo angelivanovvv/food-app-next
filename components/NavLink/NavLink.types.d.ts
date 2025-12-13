@@ -1,4 +1,4 @@
 export interface iProps {
-    href: string;
-    children: React.ReactNode
+  href: string;
+  children: React.ReactNode;
 }
