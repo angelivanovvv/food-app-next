@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Image } from '@/libs/next';
-import { getMeal } from '@/api/meals';
+import { getSingleMeal } from '@/actions/meals-actions';
 
 import { iMealsDynamicPageProps } from '@/app/meals/[slug]/page.types';
 
@@ -11,7 +11,7 @@ import classes from './page.module.css';
 
 export async function generateMetadata({ params }: iMealsDynamicPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const meal = await getMeal(slug);
+  const meal = await getSingleMeal(slug);
 
   if (!meal) {
     notFound();
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: iMealsDynamicPageProps): Prom
 
 async function MealsDynamicPage({ params }: iMealsDynamicPageProps) {
   const { slug } = await params;
-  const meal = await getMeal(slug);
+  const meal = await getSingleMeal(slug);
   const formattedMealInstructions = meal.instructions.replace(/\n/g, '<br />');
 
   if (!meal) {
@@ -36,7 +36,7 @@ async function MealsDynamicPage({ params }: iMealsDynamicPageProps) {
     <Fragment>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image alt="Meal details image" src={meal.image} fill />
+          <Image alt="Meal details image" src={meal.image as string} fill />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>

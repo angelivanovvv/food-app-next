@@ -7,9 +7,9 @@ import { iMeal } from '@/types/meals.types';
 
 const db = sql('meals.db');
 
-export async function getAllMeals(): Promise<iMeal[]> {
+export async function getMeals(): Promise<iMeal[]> {
   // Simulate async operation
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const statement = db.prepare('SELECT * FROM meals');
   // Simulate an error
   // throw new Error('Failed to load meals')
@@ -18,18 +18,20 @@ export async function getAllMeals(): Promise<iMeal[]> {
 
 export async function getMeal(slug: string): Promise<iMeal> {
   // Simulate async operation
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const statement = db.prepare('SELECT * FROM meals WHERE slug = ?');
   return statement.get(slug) as iMeal;
 }
 
-export async function saveMeal(meal: iMeal): Promise<void> {
+export async function createMeal(meal: iMeal): Promise<void> {
+  const file = meal.image as File;
+
   meal.slug = generareSlug(meal.title);
   meal.instructions = sanitaze(meal.instructions);
 
-  const { filename } = getFileDetails(meal.slug, meal.image);
+  const { filename } = getFileDetails(meal.slug, file);
 
-  await saveFile(meal.image, filename);
+  await saveFile(file, filename);
   meal.image = `/meals/${filename}`;
 
   const payload = {
@@ -62,4 +64,9 @@ export async function saveMeal(meal: iMeal): Promise<void> {
             @creator_email
         )`);
   statement.run(payload);
+}
+
+//TODO: COMPLETE DELETE METHOD
+export async function deleteMeal(id: string | number): Promise<void> {
+  console.log('delete meal with id: ', id);
 }

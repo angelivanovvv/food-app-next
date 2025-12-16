@@ -11,7 +11,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@lucia-auth/adapter-sqlite": "^3.0.2",
     "better-sqlite3": "^12.5.0",
+    "lucia": "^3.2.2",
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",

@@ -1,8 +1,8 @@
 export interface iMeal {
-  id: string | number;
+  id?: string | number;
   title: string;
   slug: string;
-  image: string;
+  image: string | File;
   summary: string;
   instructions: string;
   creator: string;

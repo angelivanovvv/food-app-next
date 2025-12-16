@@ -4,7 +4,7 @@ import { Link } from '@/libs/next';
 import type { Metadata } from 'next';
 
 import { AppSuspense, MealsGrid } from '@/components';
-import { getAllMeals } from '@/api/meals';
+import { getAllMeals } from '@/actions/meals-actions';
 
 import classes from './page.module.css';
 import type { iProps } from './page.types';

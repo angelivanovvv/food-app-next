@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { isInvalidText, isInvalidEmail, isInvalidFile, clearProperty } from '@/utils/validation';
-import { saveMeal } from '@/api/meals';
+import { getMeals, getMeal, createMeal, deleteMeal } from '@/api/meals';
 
 import {
   invalidImageErrorMessage,
@@ -15,7 +15,18 @@ import {
 import type { MealsFormState } from '@/constants/formStates';
 import type { iMeal } from '@/types/meals.types';
 
-export const shareMeal = async function (
+// Get all meals
+export const getAllMeals = async function (): Promise<iMeal[]> {
+  return await getMeals();
+};
+
+// Get single meal
+export const getSingleMeal = async function (slug: string): Promise<iMeal> {
+  return await getMeal(slug);
+};
+
+// Save meal
+export const saveMeal = async function (
   _prevState: MealsFormState,
   formData: FormData,
 ): Promise<MealsFormState> {
@@ -54,7 +65,13 @@ export const shareMeal = async function (
     };
   }
 
-  await saveMeal(meal as iMeal);
+  await createMeal(meal as iMeal);
   revalidatePath('/meals');
   redirect('/meals');
+};
+
+// Delete meal
+//TODO: COMPLETE DELETE MEAL ACTION
+export const removeMeal = async function (id: string | number) {
+  await deleteMeal(id);
 };

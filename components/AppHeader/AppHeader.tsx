@@ -6,11 +6,16 @@ import AppHeaderBackground from '@/components/HeaderBackground';
 import NavLink from '@/components/NavLink';
 
 import logoImg from '@/assets/logo.png';
+
+import { isAuthenticated, logout } from '@/actions/auth-actions';
+
 import classes from './AppHeader.module.css';
 
 import type { iProps } from './AppHeader.types';
+import SubmitButton from '../SubmitButton';
 
-const AppHeader: React.FC<iProps> = function () {
+const AppHeader: React.FC<iProps> = async function () {
+  const { isUserAuthenticated } = await isAuthenticated();
   return (
     <Fragment>
       <AppHeaderBackground />
@@ -33,12 +38,17 @@ const AppHeader: React.FC<iProps> = function () {
             <li>
               <NavLink href="/community">Foodies Community</NavLink>
             </li>
-            <li>
-              <NavLink href="/login">Log in</NavLink>
-            </li>
-            <li>
-              <NavLink href="/signup">Sign up</NavLink>
-            </li>
+            {!isUserAuthenticated ? (
+              <li>
+                <NavLink href="/auth?mode=login">Log in</NavLink>
+              </li>
+            ) : (
+              <li>
+                <form action={logout}>
+                  <SubmitButton defaultText="logout" loadingText="Loading..." />
+                </form>
+              </li>
+            )}
           </ul>
         </nav>
       </header>

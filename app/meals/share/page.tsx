@@ -3,7 +3,7 @@
 import React, { Fragment, useActionState } from 'react';
 
 import { ImagePicker, SubmitButton } from '@/components';
-import { shareMeal } from '@/actions/meals-actions';
+import { saveMeal } from '@/actions/meals-actions';
 import { defaultMealsFormState, MealsFormState } from '@/constants/formStates';
 
 import classes from './page.module.css';
@@ -11,7 +11,7 @@ import classes from './page.module.css';
 import type { iProps } from '@/app/meals/share/page.types';
 
 const ShareMealPage: React.FC<iProps> = function () {
-  const [state, formAction] = useActionState(shareMeal, defaultMealsFormState as MealsFormState);
+  const [state, formAction] = useActionState(saveMeal, defaultMealsFormState as MealsFormState);
 
   return (
     <Fragment>

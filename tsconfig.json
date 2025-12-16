@@ -25,6 +25,7 @@
       "@/constants/*": ["./constants/*"],
       "@/components/*": ["./components/*"],
       "@/libs/*": ["./libs/*"],
+      "@/config/*": ["./config/*"],
       "@/api/*": ["./api/*"],
       "@/types/*": ["./types/*"],
       "@/assets/*": ["./assets/*"],

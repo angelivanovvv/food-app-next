@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 
-import MealItem from '../Mealitem';
+import MealItem from '../MealItem';
 
 import classes from './MealsGrid.module.css';
 
