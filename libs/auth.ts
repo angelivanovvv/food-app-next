@@ -74,7 +74,7 @@ export async function destroySession() {
 
   if (!session) {
     return {
-      error: 'Unauthorized1',
+      error: 'Unauthorized!',
     };
   }
 

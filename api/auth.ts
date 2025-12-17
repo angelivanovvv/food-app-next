@@ -3,10 +3,16 @@ import { iUser } from '@/types/user.types';
 
 const db = sql('meals.db');
 
-export const createUser = async function (email: string, password: string): Promise<string> {
+export const createUser = async function (
+  username: string,
+  email: string,
+  password: string,
+): Promise<string> {
   // Simulate async operation
   await new Promise((resolve) => setTimeout(resolve, 2000));
-  const user = db.prepare('INSERT INTO users (email, password) VALUES (?, ?)').run(email, password);
+  const user = db
+    .prepare('INSERT INTO users (username, email, password) VALUES (?, ?, ?)')
+    .run(username, email, password);
   return user.lastInsertRowid.toString();
 };
 

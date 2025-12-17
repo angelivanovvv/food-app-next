@@ -22,6 +22,10 @@ const AuthForm: React.FC<iProps> = function ({ mode }) {
       <form className={classes.form} action={formAction}>
         <h1 className={classes.pageTitle}>{mode === 'login' ? 'Login' : 'Create Account'} </h1>
         <div className={classes.row}>
+          <label htmlFor="username">Username</label>
+          <input type="username" id="username" name="username" required />
+        </div>
+        <div className={classes.row}>
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" required />
         </div>

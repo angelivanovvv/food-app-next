@@ -19,9 +19,15 @@ export const signup = async function (
   _prevState: { errors: AuthFormState },
   formData: FormData,
 ): Promise<{ errors: AuthFormState }> {
+  const username = formData.get('username') as string;
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
+
   const errors: AuthFormState = {};
+
+  if (isInvalidText(username)) {
+    errors.username = 'Please provide a valid username.';
+  }
 
   if (isInvalidText(email) || isInvalidEmail(email)) {
     errors.email = 'Please provide a valid email address.';
@@ -38,7 +44,7 @@ export const signup = async function (
   const hashedPassword = hashPassword(password);
 
   try {
-    const userId = await createUser(email, hashedPassword);
+    const userId = await createUser(username, email, hashedPassword);
     await createAuthSession(userId);
     redirect('/');
   } catch (error) {
