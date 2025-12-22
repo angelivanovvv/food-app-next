@@ -1,8 +1,4 @@
-import sql from 'better-sqlite3';
-
-const db = sql('meals.db');
-
-const dummyMeals = [
+export const Meals = [
   {
     title: 'Juicy Cheese Burger',
     slug: 'juicy-cheese-burger',
@@ -159,58 +155,3 @@ const dummyMeals = [
     creator_email: 'sophiagreen@example.com',
   },
 ];
-
-// Create Users table
-db.exec(
-  `CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY,
-      username TEXT,
-      email TEXT UNIQUE,
-      password TEXT
-)`,
-);
-
-// Create sessions table
-db.exec(
-  `CREATE TABLE IF NOT EXISTS sessions (
-      id TEXT NOT NULL PRIMARY KEY,
-      expires_at INTEGER NOT NULL,
-      user_id TEXT NOT NULL,
-   FOREIGN KEY (user_id) REFERENCES users(id)
-)`,
-);
-
-// Create meals table
-db.prepare(
-  `CREATE TABLE IF NOT EXISTS meals (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      slug TEXT NOT NULL UNIQUE,
-      title TEXT NOT NULL,
-      image TEXT NOT NULL,
-      summary TEXT NOT NULL,
-      instructions TEXT NOT NULL,
-      creator TEXT NOT NULL,
-      creator_email TEXT NOT NULL
-)`,
-).run();
-
-async function initData() {
-  const stmt = db.prepare(`
-      INSERT INTO meals VALUES (
-         null,
-         @slug,
-         @title,
-         @image,
-         @summary,
-         @instructions,
-         @creator,
-         @creator_email
-      )
-   `);
-
-  for (const meal of dummyMeals) {
-    stmt.run(meal);
-  }
-}
-
-initData();

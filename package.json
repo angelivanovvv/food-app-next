@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "db:init": "tsx ./db/initDatabase.ts"
   },
   "dependencies": {
     "@lucia-auth/adapter-sqlite": "^3.0.2",
@@ -37,6 +38,7 @@
     "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.7.4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

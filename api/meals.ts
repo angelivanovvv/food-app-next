@@ -3,6 +3,8 @@ import sql from 'better-sqlite3';
 import { getFileDetails, saveFile } from '@/utils/common';
 import { generareSlug, sanitaze } from '@/utils/validation';
 
+import { GET_MEALS, GET_MEAL, CREATE_MEAL } from '@/db/meals';
+
 import { iMeal } from '@/types/meals.types';
 
 const db = sql('meals.db');
@@ -10,7 +12,7 @@ const db = sql('meals.db');
 export async function getMeals(): Promise<iMeal[]> {
   // Simulate async operation
   await new Promise((resolve) => setTimeout(resolve, 2000));
-  const statement = db.prepare('SELECT * FROM meals');
+  const statement = db.prepare(GET_MEALS);
   // Simulate an error
   // throw new Error('Failed to load meals')
   return statement.all() as iMeal[];
@@ -19,7 +21,7 @@ export async function getMeals(): Promise<iMeal[]> {
 export async function getMeal(slug: string): Promise<iMeal> {
   // Simulate async operation
   await new Promise((resolve) => setTimeout(resolve, 2000));
-  const statement = db.prepare('SELECT * FROM meals WHERE slug = ?');
+  const statement = db.prepare(GET_MEAL);
   return statement.get(slug) as iMeal;
 }
 
@@ -44,25 +46,7 @@ export async function createMeal(meal: iMeal): Promise<void> {
     creator_email: meal.creator_email,
   };
 
-  const statement = db.prepare(`
-        INSERT INTO meals (
-            title,
-            slug,
-            image, 
-            summary,
-            instructions, 
-            creator, 
-            creator_email
-        ) 
-        VALUES (
-            @title,
-            @slug,   
-            @image, 
-            @summary, 
-            @instructions, 
-            @creator, 
-            @creator_email
-        )`);
+  const statement = db.prepare(CREATE_MEAL);
   statement.run(payload);
 }
 
