@@ -37,6 +37,7 @@ export async function createMeal(meal: iMeal): Promise<void> {
   meal.image = `/meals/${filename}`;
 
   const payload = {
+    user_id: meal.user_id,
     title: meal.title,
     slug: meal.slug,
     image: meal.image,

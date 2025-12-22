@@ -2,16 +2,25 @@
 
 import { isInvalidEmail, isInvalidPassword, isInvalidText } from '@/utils/validation';
 
-import { createUser, getUserByEmail } from '@/api/auth';
+import { createUser, getUserByEmail, getUserById } from '@/api/auth';
 import { hashPassword, verifyPassword } from '@/utils/cryptPassword';
 import { verifyAuth, createAuthSession, destroySession } from '@/libs/auth';
 import type { AuthFormState } from '@/constants/formStates';
 import { redirect } from 'next/navigation';
 
+import { iUser } from '@/types/user.types';
+
 // Check if user is authenticated
-export const isAuthenticated = async function () {
-  const isAuthenticated = await verifyAuth();
-  return { isUserAuthenticated: isAuthenticated.user };
+export const isAuthenticated = async function (): Promise<{
+  isAuth: boolean | null;
+  user: iUser | null;
+}> {
+  const { session, user } = await verifyAuth();
+  if (!session) {
+    return { isAuth: null, user: null };
+  }
+  const userDetails = await getUserById(user.id);
+  return { isAuth: true, user: userDetails };
 };
 
 // Signup user
@@ -87,7 +96,7 @@ export const login = async function (
     };
   }
 
-  await createAuthSession(existingUser.id);
+  await createAuthSession(existingUser.id.toString());
   redirect('/');
 };
 

@@ -1,5 +1,6 @@
 export const Meals = [
   {
+    user_id: 100,
     title: 'Juicy Cheese Burger',
     slug: 'juicy-cheese-burger',
     image: '/images/burger.jpg',
@@ -22,6 +23,7 @@ export const Meals = [
     creator_email: 'johndoe@example.com',
   },
   {
+    user_id: 100,
     title: 'Spicy Curry',
     slug: 'spicy-curry',
     image: '/images/curry.jpg',
@@ -46,6 +48,7 @@ export const Meals = [
     creator_email: 'max@example.com',
   },
   {
+    user_id: 100,
     title: 'Homemade Dumplings',
     slug: 'homemade-dumplings',
     image: '/images/dumplings.jpg',
@@ -67,6 +70,7 @@ export const Meals = [
     creator_email: 'emilychen@example.com',
   },
   {
+    user_id: 100,
     title: 'Classic Mac n Cheese',
     slug: 'classic-mac-n-cheese',
     image: '/images/macncheese.jpg',
@@ -91,6 +95,7 @@ export const Meals = [
     creator_email: 'laurasmith@example.com',
   },
   {
+    user_id: 100,
     title: 'Authentic Pizza',
     slug: 'authentic-pizza',
     image: '/images/pizza.jpg',
@@ -112,6 +117,7 @@ export const Meals = [
     creator_email: 'mariorossi@example.com',
   },
   {
+    user_id: 100,
     title: 'Wiener Schnitzel',
     slug: 'wiener-schnitzel',
     image: '/images/schnitzel.jpg',
@@ -133,6 +139,7 @@ export const Meals = [
     creator_email: 'franzhuber@example.com',
   },
   {
+    user_id: 100,
     title: 'Fresh Tomato Salad',
     slug: 'fresh-tomato-salad',
     image: '/images/tomato-salad.jpg',

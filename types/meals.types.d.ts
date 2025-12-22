@@ -1,5 +1,6 @@
 export interface iMeal {
-  id?: string | number;
+  id?: number;
+  user_id: number;
   title: string;
   slug: string;
   image: string | File;

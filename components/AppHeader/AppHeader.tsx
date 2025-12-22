@@ -15,7 +15,8 @@ import type { iProps } from './AppHeader.types';
 import SubmitButton from '../SubmitButton';
 
 const AppHeader: React.FC<iProps> = async function () {
-  const { isUserAuthenticated } = await isAuthenticated();
+  const { isAuth, user } = await isAuthenticated();
+
   return (
     <Fragment>
       <AppHeaderBackground />
@@ -30,27 +31,30 @@ const AppHeader: React.FC<iProps> = async function () {
           />
           NextLevel Food
         </Link>
-        <nav className={classes.nav}>
-          <ul>
-            <li>
-              <NavLink href="/meals"> Browse Meals</NavLink>
-            </li>
-            <li>
-              <NavLink href="/community">Foodies Community</NavLink>
-            </li>
-            {!isUserAuthenticated ? (
+        <div className={classes.navContainer}>
+          {isAuth && user && <h3>Hello, {user.username}</h3>}
+          <nav className={classes.nav}>
+            <ul>
               <li>
-                <NavLink href="/auth?mode=login">Log in</NavLink>
+                <NavLink href="/meals"> Browse Meals</NavLink>
               </li>
-            ) : (
               <li>
-                <form action={logout}>
-                  <SubmitButton defaultText="logout" loadingText="Loading..." />
-                </form>
+                <NavLink href="/community">Foodies Community</NavLink>
               </li>
-            )}
-          </ul>
-        </nav>
+              {!isAuth ? (
+                <li>
+                  <NavLink href="/auth?mode=login">Log in</NavLink>
+                </li>
+              ) : (
+                <li>
+                  <form action={logout}>
+                    <SubmitButton defaultText="logout" loadingText="Loading..." />
+                  </form>
+                </li>
+              )}
+            </ul>
+          </nav>
+        </div>
       </header>
     </Fragment>
   );

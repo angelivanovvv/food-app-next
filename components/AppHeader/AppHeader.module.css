@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 2rem 1rem;
 }
 
@@ -9,6 +9,18 @@
   .header {
     padding: 2rem 10%;
   }
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.navContainer h3 {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .nav ul {

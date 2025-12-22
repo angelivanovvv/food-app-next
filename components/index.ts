@@ -6,6 +6,7 @@ import HeaderBackground from './HeaderBackground';
 import Slider from './Slider';
 import MealsGrid from './MealsGrid';
 import MealItem from './MealItem';
+import ShareMealForm from './ShareMealForm';
 import ImagePicker from './ImagePicker';
 import SubmitButton from './SubmitButton';
 
@@ -18,6 +19,7 @@ export {
   Slider,
   MealsGrid,
   MealItem,
+  ShareMealForm,
   ImagePicker,
   SubmitButton,
 };

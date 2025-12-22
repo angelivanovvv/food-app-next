@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
+import { isAuthenticated } from './auth-actions';
 import { isInvalidText, isInvalidEmail, isInvalidFile, clearProperty } from '@/utils/validation';
 import { getMeals, getMeal, createMeal, deleteMeal } from '@/api/meals';
 
@@ -30,7 +31,10 @@ export const saveMeal = async function (
   _prevState: MealsFormState,
   formData: FormData,
 ): Promise<MealsFormState> {
+  const { user } = await isAuthenticated();
+
   const meal = {
+    user_id: user?.id,
     title: clearProperty(formData.get('title')),
     image: formData.get('image') as File | string,
     summary: clearProperty(formData.get('summary')),
@@ -72,6 +76,6 @@ export const saveMeal = async function (
 
 // Delete meal
 //TODO: COMPLETE DELETE MEAL ACTION
-export const removeMeal = async function (id: string | number) {
+export const removeMeal = async function (id: number) {
   await deleteMeal(id);
 };
