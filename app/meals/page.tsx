@@ -4,8 +4,8 @@ import { Link } from '@/libs/next';
 import type { Metadata } from 'next';
 
 import { AppSuspense, MealsGrid } from '@/components';
-import { getAllMeals } from '@/actions/meals-actions';
-import { isAuthenticated } from '@/actions/auth-actions';
+import { getAllMeals } from '@/actions/meals.actions';
+import { isAuthenticated } from '@/actions/auth.actions';
 
 import classes from './page.module.css';
 import type { iProps } from './page.types';

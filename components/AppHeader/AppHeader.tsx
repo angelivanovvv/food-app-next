@@ -7,7 +7,7 @@ import NavLink from '@/components/NavLink';
 
 import logoImg from '@/assets/logo.png';
 
-import { isAuthenticated, logout } from '@/actions/auth-actions';
+import { isAuthenticated, logout } from '@/actions/auth.actions';
 
 import classes from './AppHeader.module.css';
 

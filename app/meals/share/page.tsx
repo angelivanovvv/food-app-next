@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { ShareMealForm } from '@/components';
 
-import { isAuthenticated } from '@/actions/auth-actions';
+import { isAuthenticated } from '@/actions/auth.actions';
 
 import classes from './page.module.css';
 

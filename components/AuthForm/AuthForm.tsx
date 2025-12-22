@@ -5,7 +5,7 @@ import React, { useActionState } from 'react';
 import { Link } from '@/libs/next';
 import { SubmitButton } from '@/components';
 
-import { authenticate } from '@/actions/auth-actions';
+import { authenticate } from '@/actions/auth.actions';
 import { defaultAuthFormState, AuthFormState } from '@/constants/formStates';
 
 import classes from '@/components/AuthForm/AuthForm.module.css';

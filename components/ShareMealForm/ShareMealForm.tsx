@@ -3,7 +3,7 @@
 import React, { useActionState } from 'react';
 
 import { ImagePicker, SubmitButton } from '@/components';
-import { saveMeal } from '@/actions/meals-actions';
+import { saveMeal } from '@/actions/meals.actions';
 import { defaultMealsFormState, MealsFormState } from '@/constants/formStates';
 
 import classes from '@/components/ShareMealForm/ShareMealForm.module.css';

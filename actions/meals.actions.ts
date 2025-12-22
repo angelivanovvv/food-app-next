@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-import { isAuthenticated } from './auth-actions';
+import { isAuthenticated } from './auth.actions';
 import { isInvalidText, isInvalidEmail, isInvalidFile, clearProperty } from '@/utils/validation';
 import { getMeals, getMeal, createMeal, deleteMeal } from '@/api/meals';
 

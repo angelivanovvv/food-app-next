@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Image } from '@/libs/next';
-import { getSingleMeal } from '@/actions/meals-actions';
+import { getSingleMeal } from '@/actions/meals.actions';
 
 import { iMealsDynamicPageProps } from '@/app/meals/[slug]/page.types';
 
